@@ -1,0 +1,12 @@
+body {
+    background-image: url('../resources/images/backgroundCastles.png');
+}
+
+#logo {
+    text-align: center;
+}
+
+#logo img {
+    width: 25vw;
+    margin-top: 40px;
+}
