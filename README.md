@@ -1,4 +1,4 @@
-# Outer Adventuresbnuyj 
+# Outer Adventures
 
 ## Basic Implementations
 
