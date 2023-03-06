@@ -1,11 +1,12 @@
 // Define the Player class
 class Player {
-    constructor(health, knowledge, strength, defense, level) {
+    constructor(health, knowledge, strength, defense, level, attackGif) {
         this.health = health;
         this.knowledge = knowledge;
         this.strength = strength;
         this.defense = defense;
         this.level = level;
+        this.attackGif = attackGif;
     }
 
     // Generates random stats and applies them to the Player.
@@ -92,6 +93,12 @@ function startGame() {
     const playerStrength = Math.floor(Math.random() * (110 - 60 + 1) + 60);
     const playerDefense = Math.floor(Math.random() * (20 - 10 + 1) + 10);
 
+    // Paths to gif attacks:
+    // It's empty because there are animations missing.
+    const attackGif = {
+        'ATTACK': '../resources/gifs/playerAttack1.gif'
+    };
+
     // Enemy stats:
     const enemyHealth = Math.floor(Math.random() * (60 - 30 + 1) + 30);
     const enemyKnowledge = Math.floor(Math.random() * (60 - 30 + 1) + 30);
@@ -99,7 +106,7 @@ function startGame() {
     const enemyDefense = Math.floor(Math.random() * (60 - 30 + 1) + 30);
 
     // Create a new player with the entered stats and do the same with the enemy.
-    player = new Player(playerHealth, playerKnowledge, playerStrength, playerDefense, 1);
+    player = new Player(playerHealth, playerKnowledge, playerStrength, playerDefense, 1, attackGif);
     currentEnemy = new Enemy(enemyHealth, enemyKnowledge, enemyStrength, enemyDefense);
 
     // Use this to reset the enemies health. Otherwise it will decrease over time when enemies spawn.
@@ -122,8 +129,13 @@ function playerAttack(event) {
     // We pass the event to the function to determine which button has been clicked:
     const attackType = event.target.textContent;
     const msgElmPlayer = document.getElementById('textLogPlayer');
+    const playerSprite = document.getElementById('playerSprite');
+    const idleImage = playerSprite.src;
+    
+    let pathToGif;
     let damage;
     if (attackType === 'ATTACK') {
+        pathToGif = player.attackGif.ATTACK;
         damage = player.strength - currentEnemy.defense;
         currentEnemy.health -= damage;
         msgElmPlayer.textContent = `You attacked the enemy for ${damage} damage!`;
@@ -140,6 +152,12 @@ function playerAttack(event) {
         player.health += 20;
         msgElmPlayer.textContent = `You drink a sparkly red potion... Health +20!`;
     }
+
+    playerSprite.src = pathToGif;
+
+    setTimeout(() => {
+        playerSprite.src = idleImage;
+    }, 1400);
 
     // We can't do negative damage:
     if (damage < 0) {
