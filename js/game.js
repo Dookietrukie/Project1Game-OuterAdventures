@@ -8,23 +8,28 @@ class Player {
         this.level = level;
     }
 
-    // Method to add random points to the player's stats after defeating an enemy
+    // Generates random stats and applies them to the Player.
+    // Called when an enemy is defeated.
     addStats() {
-        const healthIncrease = randomIntFromInterval(35, 45);
-        const knowledgeIncrease = randomIntFromInterval(35, 45);
-        const strengthIncrease = randomIntFromInterval(35, 45);
-        const defenseIncrease = randomIntFromInterval(35, 45);
+        const msgElmPlayer = document.getElementById('textLogPlayer'); 
+
+        const healthIncrease = randomIntFromInterval(15, 25);
+        const knowledgeIncrease = randomIntFromInterval(15, 25);
+        const strengthIncrease = randomIntFromInterval(15, 25);
+        const defenseIncrease = randomIntFromInterval(15, 25);
+        
         this.health += healthIncrease;
         this.knowledge += knowledgeIncrease;
         this.strength += strengthIncrease;
         this.defense += defenseIncrease;
-        console.log(`You defeated the enemy and gained ${healthIncrease} health, ${knowledgeIncrease} knowledge, ${strengthIncrease} strength, and ${defenseIncrease} defense!`);
+
+        msgElmPlayer.textContent = `You defeated the enemy and gained ${healthIncrease} health, ${knowledgeIncrease} knowledge, ${strengthIncrease} strength, and ${defenseIncrease} defense!`;
     }
 }
 
 // Define the Enemy class
 class Enemy {
-    constructor(health, knowledge, strength, defense, image) {
+    constructor(health, knowledge, strength, defense) {
         this.health = health;
         this.knowledge = knowledge;
         this.strength = strength;
@@ -32,6 +37,7 @@ class Enemy {
         this.image = this.setRandomImage();
     }
 
+    // Store all the possible images for the enemy in an array and pick a random one.
     setRandomImage() {
         const enemyImgArr = [
             '../resources/images/enemy1.png',
@@ -46,12 +52,13 @@ class Enemy {
         return enemyImgArr[randomIndex % enemyImgArr.length];
     }
 
-    // Method to add random points to the player's stats after defeating an enemy
+    // Adds random points to the enemy stats and sets them. Also picks a random image and adds one level to the enemy. 
     addStats() {
-        const healthIncrease = randomIntFromInterval(30, 40);
-        const knowledgeIncrease = randomIntFromInterval(30, 40);
-        const strengthIncrease = randomIntFromInterval(30, 40);
-        const defenseIncrease = randomIntFromInterval(30, 40);
+        const healthIncrease = randomIntFromInterval(20, 35);
+        const knowledgeIncrease = randomIntFromInterval(20, 35);
+        const strengthIncrease = randomIntFromInterval(20, 35);
+        const defenseIncrease = randomIntFromInterval(20, 35);
+        const msgEnemyElm = document.getElementById('textLogEnemy');
         this.health += healthIncrease;
         this.knowledge += knowledgeIncrease;
         this.strength += strengthIncrease;
@@ -59,45 +66,48 @@ class Enemy {
         this.level++;
         this.image = this.setRandomImage();
 
-        console.log(`The next enemy will have ${healthIncrease} health, ${knowledgeIncrease} knowledge, ${strengthIncrease} strength, and ${defenseIncrease} defense!`);
+        msgEnemyElm.textContent = `The next enemy will have ${healthIncrease} health, ${knowledgeIncrease} knowledge, ${strengthIncrease} strength, and ${defenseIncrease} defense!`;
     }
 }
 
-// Global variables
+// Variables in the global scope:
 let player;
 let currentEnemy;
 let enHealth;
 
 
-// Define utility function to generate a random integer between a minimum and maximum value
+// Function to generate a random number between a min and a max.
 function randomIntFromInterval(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 // Function to start the game
 function startGame() {
-    // Get the player's stats from the input fields
+    // Generate the starting values for the stats of the enemy and the player.
+
+    // Player stats:
     const playerHealth = Math.floor(Math.random() * (110 - 60 + 1) + 60);
     const playerKnowledge = Math.floor(Math.random() * (110 - 60 + 1) + 60);
     const playerStrength = Math.floor(Math.random() * (110 - 60 + 1) + 60);
     const playerDefense = Math.floor(Math.random() * (20 - 10 + 1) + 10);
 
+    // Enemy stats:
     const enemyHealth = Math.floor(Math.random() * (60 - 30 + 1) + 30);
     const enemyKnowledge = Math.floor(Math.random() * (60 - 30 + 1) + 30);
     const enemyStrength = Math.floor(Math.random() * (60 - 30 + 1) + 30);
     const enemyDefense = Math.floor(Math.random() * (60 - 30 + 1) + 30);
-    // Create a new player with the entered stats
+
+    // Create a new player with the entered stats and do the same with the enemy.
     player = new Player(playerHealth, playerKnowledge, playerStrength, playerDefense, 1);
     currentEnemy = new Enemy(enemyHealth, enemyKnowledge, enemyStrength, enemyDefense);
-    enHealth = currentEnemy.health;
-    // Create a new enemy with random stats
-    // Update the game interface to show the new player and enemy stats
+
+    // Use this to reset the enemies health. Otherwise it will decrease over time when enemies spawn.
+    enHealth = currentEnemy.health; 
+
+    // Function to update the stats on the UI.
     updateStats();
 
-    console.log(`Player: health=${player.health}, knowledge=${player.knowledge}, strength=${player.strength}, defense=${player.defense}`);
-    console.log(`Enemy: health=${currentEnemy.health}, knowledge=${currentEnemy.knowledge}, strength=${currentEnemy.strength}, defense=${currentEnemy.defense}`);
-
-    // Set up event listeners for the attack buttons
+    // Loop throught the buttons to add the listener to them all.
     const attackButtons = document.querySelectorAll('.skillBtns');
     for (let i = 0; i < attackButtons.length; i++) {
         attackButtons[i].addEventListener('click', playerAttack);
@@ -106,89 +116,94 @@ function startGame() {
 
 
 
-// Function to handle a player attack
+// All the handling of the player's attack.
 function playerAttack(event) {
-    // Determine which attack button was clicked and calculate damage
+    // We pass the event to the function to determine which button has been clicked:
     const attackType = event.target.textContent;
-    const msgElm = document.getElementById('textLog');
+    const msgElmPlayer = document.getElementById('textLogPlayer');
     let damage;
     if (attackType === 'ATTACK') {
         damage = player.strength - currentEnemy.defense;
         currentEnemy.health -= damage;
-        const attackMsg = `You attacked the enemy for ${damage} damage!`;
-        msgElm.textContent = attackMsg;
+        msgElmPlayer.textContent = `You attacked the enemy for ${damage} damage!`;
     } else if (attackType === 'SPELL') {
         damage = player.knowledge - currentEnemy.defense;
         currentEnemy.health -= damage;
-        const spellMsg = `Your fireball did ${damage} damage!`;
-        msgElm.textContent = spellMsg;
+        msgElmPlayer.textContent = `Your fireball did ${damage} damage!`;
     } else if (attackType === 'DEFENSE') {
         damage = 0;
-        player.defense += 10;
-        const defenseMsg = `You raise your shield... Denfense +10!`;
-        msgElm.textContent = defenseMsg;
+        player.defense += 5;
+        msgElmPlayer.textContent = `You raise your shield... Denfense +5!`;
     } else if (attackType === 'POTION') {
         damage = 0;
         player.health += 20;
-        const potionMsg = `You drink a sparkly red potion... Health +20!`;
-        msgElm.textContent = potionMsg;
+        msgElmPlayer.textContent = `You drink a sparkly red potion... Health +20!`;
     }
-    // Make sure damage is at least 1
-    if(damage < 0) {
+
+    // We can't do negative damage:
+    if (damage < 0) {
         damage = 1;
     }
 
-    // Subtract damage from enemy health
-    
-    // Check if the enemy is defeated
+    // Loop to handle if the enemy is dead or not.
     if (currentEnemy.health <= 0) {
-        console.log('You defeated the enemy!');
-        // Increase the player's stats and update the interface
         currentEnemy.health = enHealth;
         player.addStats();
         updateStats();
+
         // Generate a new enemy with increased stats and set as current enemy
         currentEnemy.addStats();
-        // Update the interface to show the new enemy
-        console.log(`You're now facing a new enemy with ${currentEnemy.health} health, ${currentEnemy.knowledge} knowledge, ${currentEnemy.strength} strength, and ${currentEnemy.defense} defense.`);
-        // Increase the player's level
+
         player.level++;
         document.querySelector('h1 span').textContent = player.level;
     } else {
-        // Enemy is still alive, so it attacks the player
+        // Enemy is still alive...
         enemyAttack();
     }
 }
 
-// Function to handle an enemy attack
+// All the handling of the enemy attack.
 function enemyAttack() {
-    // Calculate damage based on enemy strength and player defense
+    // Calculate damage 
     let damage = currentEnemy.strength - player.defense;
-    // Make sure damage is at least 1
+    const msgEnemyElm = document.getElementById('textLogEnemy');
+    const msgPlayerElm = document.getElementById('textLogPlayer');
     
-    // Subtract damage from player health
+    if (damage < 0) {
+        damage = 1;
+    }
+
+    // Deal the damage
     player.health -= damage;
-    console.log(`The enemy attacked you for ${damage} damage!`);
-    // Check if the player is defeated
+    msgEnemyElm.textContent = `The enemy attacked you for ${damage} damage!`;
+
+    // Handle the player's defeat
     if (player.health <= 0) {
-        console.log('You have been defeated! Game over.');
-        // Remove event listeners from attack buttons
+        msgPlayerElm.textContent = 'You have been defeated! Game over.';
+        msgEnemyElm.textContent = `ENEMIES WON.`
+        player.health = 0;
+        updateStats();
+
+        // We can't press the buttons anymore so we remove the listeners.
         const attackButtons = document.querySelectorAll('.skillBtns');
         for (let i = 0; i < attackButtons.length; i++) {
             attackButtons[i].removeEventListener('click', playerAttack);
         }
     } else {
-        // Player is still alive, so update stats and wait for player to attack again
+        // Player is still alive...
         updateStats();
     }
 }
 
-// Function to update the game interface with current player and enemy stats
+// Handle the UI update.
 function updateStats() {
+    // Player Stats:
     document.getElementById('healthValueSpan').textContent = player.health;
     document.getElementById('knowledgeValueSpan').textContent = player.knowledge;
     document.getElementById('strength-value-span').textContent = player.strength;
     document.getElementById('defense-value-span').textContent = player.defense;
+    
+    // Enemy stats:
     document.getElementById('healthValueSpanEnemy').textContent = currentEnemy.health;
     document.getElementById('knowledgeValueSpanEnemy').textContent = currentEnemy.knowledge;
     document.getElementById('strength-value-span-enemy').textContent = currentEnemy.strength;
@@ -197,4 +212,5 @@ function updateStats() {
     document.getElementById('enemySprite').src = currentEnemy.image;
 }
 
+// Actually start the game.
 startGame();

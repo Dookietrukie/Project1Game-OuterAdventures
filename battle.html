@@ -23,15 +23,15 @@
                 <span>ATTACK</span>
             </button>
             <button id="skillButton" class="skillBtns">
-                <img class="skillIconImg" src="./resources/images/warriorAttackIcon.png">
+                <img class="skillIconImg" src="./resources/images/warriorSpellIcon.png">
                 <span>SPELL</span>
             </button>
             <button id="defenseButton" class="skillBtns">
-                <img class="skillIconImg" src="./resources/images/warriorAttackIcon.png">
+                <img class="skillIconImg" src="./resources/images/warriorDefenseIcon.png">
                 <span>DEFENSE</span>
             </button>
             <button id="potionButton" class="skillBtns">
-                <img class="skillIconImg" src="./resources/images/warriorAttackIcon.png">
+                <img class="skillIconImg" src="./resources/images/warriorPotionIcon.png">
                 <span>POTION</span>
             </button>
         </div>
@@ -39,22 +39,22 @@
             <ul>
                 <h2><span>CHARACTER </span>STATS: </h2>
                 <li>
-                    <img src="./resources/images/warriorAttackIcon.png">
+                    <img src="./resources/images/healthIcon.png">
                     Health:
                     <span id="healthValueSpan"></span>
                 </li>
                 <li>
-                    <img src="./resources/images/warriorAttackIcon.png">
+                    <img src="./resources/images/knowledgeIcon.png">
                     Knowledge: 
                     <span id="knowledgeValueSpan"></span>
                 </li>
                 <li>
-                    <img src="./resources/images/warriorAttackIcon.png">
+                    <img src="./resources/images/strengthIcon.png">
                     Strength: 
                     <span id="strength-value-span"></span>
                 </li>
                 <li>
-                    <img src="./resources/images/warriorAttackIcon.png">
+                    <img src="./resources/images/defenseIcon.png">
                     Defense: 
                     <span id="defense-value-span"></span>
                 </li>
@@ -62,27 +62,30 @@
             <ul>
                 <h2><span>ENEMY </span>STATS: </h2>
                 <li>
-                    <img src="./resources/images/warriorAttackIcon.png">
+                    <img src="./resources/images/healthIcon.png">
                     Health:
                     <span id="healthValueSpanEnemy"></span>
                 </li>
                 <li>
-                    <img src="./resources/images/warriorAttackIcon.png">
+                    <img src="./resources/images/knowledgeIcon.png">
                     Knowledge: 
                     <span id="knowledgeValueSpanEnemy"></span>
                 </li>
                 <li>
-                    <img src="./resources/images/warriorAttackIcon.png">
+                    <img src="./resources/images/strengthIcon.png">
                     Strength: 
                     <span id="strength-value-span-enemy"></span>
                 </li>
                 <li>
-                    <img src="./resources/images/warriorAttackIcon.png">
+                    <img src="./resources/images/defenseIcon.png">
                     Defense: 
                     <span id="defense-value-span-enemy"></span>
                 </li>
             </ul>
-            <p id="textLog"></p>
+            <div id="textLogContainer">
+                <p id="textLogPlayer" class="textLog"></p>
+                <p id="textLogEnemy" class="textLog"></p>
+            </div>
         </div>
         <div id="playerFrame">
             <img id="playerSprite" src="./resources/images/warriorIdle.png">

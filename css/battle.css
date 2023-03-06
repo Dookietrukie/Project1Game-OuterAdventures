@@ -20,11 +20,19 @@ label {
     font-size: 1.2em;
 }
 
-#textLog {
+#textLogContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.textLog {
     border: 1px solid black;
     padding: 30px;
     border-radius: 5px 20px 5px 20px;
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: rgba(0, 0, 0, 0.7);
+    width: 30%;
+    margin: 20px;
 }
 
 #buttonContainer {
@@ -42,12 +50,30 @@ label {
   align-items: center;
   justify-content: center;
   padding: 10px;
-  background-color: #333;
   color: #fff;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  
+}
+
+#attackButton {
+    background-color: #333;
+}
+
+#skillButton {
+    background-color: rgb(123, 23, 23);
+}
+
+#defenseButton {
+    background-color: #011643;
+}
+
+#potionButton {
+    background-color: #e0d907;
+}
+
+li span {
+    font-weight: 800;
 }
 
 .skillBtns:not(.no-margin) {
@@ -68,7 +94,7 @@ label {
 #playerFrame {
     position: absolute;
     top: 62vh;
-    right: 30vw;
+    right: 33vw;
     width: 10%;
     height: 40%;
 }
@@ -88,7 +114,7 @@ label {
     height: 40%;
     word-wrap: break-word;
     top: 60vh;
-    left: 30vw;
+    left: 33vw;
     position: absolute;
 }
 
@@ -97,7 +123,7 @@ label {
     width: auto;
     position: absolute;
     top: 50%;
-    right: 25%
+    right: 15%
 }
 
 #statsContainer {
@@ -134,7 +160,7 @@ li img {
 
 #container p {
     font-size: 1.3em;
-    color: rgb(19, 57, 0);
+    color: rgb(0, 0, 0);
 }
 
 .pBolder {
@@ -168,6 +194,16 @@ li img {
     font-size: 1.2em;
     text-align: center;
     background-color: rgba(255, 255, 255, 0.5)
+}
+
+#enemyFrame p {
+    position: absolute;
+    top: 2vh;
+    font-size: 1.1em;
+}
+
+#textLogContainer p {
+    color: white;
 }
 
 /* THIS CODE IS TO MAKE THE H1 MOVE */
