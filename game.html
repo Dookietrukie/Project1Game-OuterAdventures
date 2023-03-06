@@ -9,7 +9,7 @@
     <title>Outer Adventures</title>
 
     <!-- Links for Stylesheets -->
-    <link rel="stylesheet" href="./css/game.css">
+    <link rel="stylesheet" href="./css/game.css" id="stylesheet">
 
 </head>
 
@@ -19,25 +19,13 @@
         <h1>WELCOME, ADVENTURER!</h1>
         <img src="./resources/images/warriorIdle.png">
         <p class="pBolder">Ready to battle?</p>
-        <p>Whoa, you open your eyes and find yourself in a freaky forest. The trees are towering and there's no path in sight. You can't remember how you got here, but something tells you that you're not in your usual neck of the woods. You can hear strange noises coming from all around, and you're pretty sure that there's something lurking in the shadows. Can you find your way out of this crazy place and uncover its secrets?</p>
-        <p class="pBolder">Create your character:</p>
-        <label for="charName">Name:</label>
-        <input type="text" id="charName" placeholder="Name your character..." size="25" value=" ">
+        <p>Whoa, you open your eyes and find yourself in a freaky forest. The trees are towering and there's no path in
+            sight. You can't remember how you got here, but something tells you that you're not in your usual neck of
+            the woods. You can hear strange noises coming from all around, and you're pretty sure that there's something
+            lurking in the shadows. Can you find your way out of this crazy place and uncover its secrets?</p>
         <div id="charAttributes">
-            <div id="innerCharAttributes">
-                <label>Health:</label>
-                <input type="number" id="healthInput" class="attrInput" value="0">
-                <label>Strength:</label>
-                <input type="number" id="strengthInput" class="attrInput" value="0">
-                <label>Knowledge:</label>
-                <input type="number" id="knowledgeInput" class="attrInput" value="0">
-                <label>Defense:</label>
-                <input type="number" id="defenseInput" class="attrInput" value="0">
-            </div>
-            <p class="pBolder">When you press the "Start Adventure" button, your character will be given random stats and your adventure will begin.</p>
-            <p class="pBolder">Be prepared...</p>
+
             <div>
-                <button id="statsBtn">Generate Stats</button>
                 <button id="startBtn">START PLAYING!</button>
             </div>
         </div>

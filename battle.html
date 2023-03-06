@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Outer Adventures</title>
+
+    <!-- Links for Stylesheets -->
+    <link rel="stylesheet" href="./css/battle.css">
+
+</head>
+
+<body>
+
+    <div id="container">
+        <h1>LEVEL: <span>1</span></h1>
+        <div id="buttonContainer">
+            <button id="attackButton" class="skillBtns no-margin">
+                <img class="skillIconImg" src="./resources/images/warriorAttackIcon.png">
+                <span>ATTACK</span>
+            </button>
+            <button id="attackButton" class="skillBtns">
+                <img class="skillIconImg" src="./resources/images/warriorAttackIcon.png">
+                <span>SPELL</span>
+            </button>
+            <button id="attackButton" class="skillBtns">
+                <img class="skillIconImg" src="./resources/images/warriorAttackIcon.png">
+                <span>DEFENSE</span>
+            </button>
+            <button id="attackButton" class="skillBtns">
+                <img class="skillIconImg" src="./resources/images/warriorAttackIcon.png">
+                <span>POTION</span>
+            </button>
+        </div>
+        <div id="statsContainer">
+            <h2><span>CHARACTER </span>STATS: </h2>
+            <ul>
+                <li>
+                    <img src="./resources/images/warriorAttackIcon.png">
+                    Health:
+                    <span id="healthValueSpan"></span>
+                </li>
+                <li>
+                    <img src="./resources/images/warriorAttackIcon.png">
+                    Knowledge: 
+                    <span id="knowledgeValueSpan"></span>
+                </li>
+                <li>
+                    <img src="./resources/images/warriorAttackIcon.png">
+                    Strength: 
+                    <span id="strength-value-span"></span>
+                </li>
+                <li>
+                    <img src="./resources/images/warriorAttackIcon.png">
+                    Defense: 
+                    <span id="defense-value-span"></span>
+                </li>
+            </ul>
+        </div>
+        <div id="playerFrame">
+            <img id="playerSprite" src="./resources/images/warriorIdle.png">
+            <p id="playerName" class="pBolder">Dookie</p>
+        </div>
+        <div id="enemyFrame">
+            <img id="enemySprite" src="./resources/images/enemy1.png">
+            <p id="enemyName" class="pBolder">Weep Face</p>
+        </div>
+    </div>
+
+    <!-- JavaScript Scripts -->
+    <script src="./js/game.js"></script>
+
+</body>
+
+</html>
