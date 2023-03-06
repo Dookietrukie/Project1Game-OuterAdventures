@@ -20,6 +20,13 @@ label {
     font-size: 1.2em;
 }
 
+#textLog {
+    border: 1px solid black;
+    padding: 30px;
+    border-radius: 5px 20px 5px 20px;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
 #buttonContainer {
     width: 100%;
     height: 9vh;
@@ -30,7 +37,7 @@ label {
     padding-top: 10px;
 }
 
-#attackButton {
+.skillBtns {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -47,7 +54,7 @@ label {
     margin-left: 30px;
 }
 
-#attackButton span {
+.skillBtns span {
     margin-left: 10px;
     font-family: Copperplate, "Copperplate Gothic Light", fantasy;
     font-size: 1.5em;
@@ -105,6 +112,9 @@ ul {
     margin: 0;
     padding: 0;
     font-size: 1.3em;
+    display: inline-block;
+    margin: 50px;
+    margin-bottom: 0;
 }
 
 li img {
