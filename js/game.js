@@ -47,6 +47,7 @@ class Enemy {
             '../resources/images/enemy5.png',
             '../resources/images/enemy6.png',
             '../resources/images/enemy7.png',
+            '../resources/images/enemy8.png',
         ];
         const randomIndex = Math.floor(Math.random() * enemyImgArr.length);
         return enemyImgArr[randomIndex % enemyImgArr.length];
@@ -150,6 +151,7 @@ function playerAttack(event) {
         currentEnemy.health = enHealth;
         player.addStats();
         updateStats();
+        changeBackground();
 
         // Generate a new enemy with increased stats and set as current enemy
         currentEnemy.addStats();
@@ -193,6 +195,19 @@ function enemyAttack() {
         // Player is still alive...
         updateStats();
     }
+}
+
+function changeBackground() {
+    const bodyElm = document.body;
+    const bgsImgArray = [
+        'url(../resources/images/backgroundColorDesert.png)',
+        'url(../resources/images/backgroundColorForest.png)',
+        'url(../resources/images/backgroundColorGrass.png)',
+        'url(../resources/images/backgroundColorFall.png)',
+    ];
+    const randomIndex = Math.floor(Math.random() * bgsImgArray.length);
+
+    bodyElm.style.backgroundImage = bgsImgArray[randomIndex % bgsImgArray.length];
 }
 
 // Handle the UI update.
