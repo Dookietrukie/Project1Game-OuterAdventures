@@ -43,7 +43,7 @@ class Enemy {
             '../resources/images/enemy7.png',
         ];
         const randomIndex = Math.floor(Math.random() * enemyImgArr.length);
-        return enemyImgArr[randomIndex];
+        return enemyImgArr[randomIndex % enemyImgArr.length];
     }
 
     // Method to add random points to the player's stats after defeating an enemy
@@ -56,6 +56,8 @@ class Enemy {
         this.knowledge += knowledgeIncrease;
         this.strength += strengthIncrease;
         this.defense += defenseIncrease;
+        this.level++;
+        this.image = this.setRandomImage();
 
         console.log(`The next enemy will have ${healthIncrease} health, ${knowledgeIncrease} knowledge, ${strengthIncrease} strength, and ${defenseIncrease} defense!`);
     }
@@ -148,7 +150,6 @@ function playerAttack(event) {
         // Generate a new enemy with increased stats and set as current enemy
         currentEnemy.addStats();
         // Update the interface to show the new enemy
-        updateStats();
         console.log(`You're now facing a new enemy with ${currentEnemy.health} health, ${currentEnemy.knowledge} knowledge, ${currentEnemy.strength} strength, and ${currentEnemy.defense} defense.`);
         // Increase the player's level
         player.level++;
@@ -193,8 +194,7 @@ function updateStats() {
     document.getElementById('strength-value-span-enemy').textContent = currentEnemy.strength;
     document.getElementById('defense-value-span-enemy').textContent = currentEnemy.defense;
     document.getElementById('enemyName').textContent = `Level ${player.level} Enemy`;
-    document.getElementById('enemySprite').src = `./resources/images/enemy${player.level}.png`;
-    document.getElementById('enemySprite').src = currentEnemy.setRandomImage();
+    document.getElementById('enemySprite').src = currentEnemy.image;
 }
 
 startGame();
