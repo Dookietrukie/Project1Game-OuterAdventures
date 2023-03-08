@@ -102,7 +102,9 @@ li span {
 #playerSprite {
     position: absolute;
     top: 50%;
-    right: 10%;
+    left: 5%;
+    width: 100px;
+    height: 100px;
 }
 
 #playerSprite p {
@@ -119,11 +121,11 @@ li span {
 }
 
 #enemySprite {
-    height: 86px;
+    height: 120px;
     width: auto;
     position: absolute;
     top: 50%;
-    right: 15%
+    right: 2.5%
 }
 
 #statsContainer {
