@@ -41,14 +41,14 @@ class Enemy {
     // Store all the possible images for the enemy in an array and pick a random one.
     setRandomImage() {
         const enemyImgArr = [
-            '../resources/images/enemy1.png',
-            '../resources/images/enemy2.png',
-            '../resources/images/enemy3.png',
-            '../resources/images/enemy4.png',
-            '../resources/images/enemy5.png',
-            '../resources/images/enemy6.png',
-            '../resources/images/enemy7.png',
-            '../resources/images/enemy8.png',
+            './resources/images/enemy1.png',
+            './resources/images/enemy2.png',
+            './resources/images/enemy3.png',
+            './resources/images/enemy4.png',
+            './resources/images/enemy5.png',
+            './resources/images/enemy6.png',
+            './resources/images/enemy7.png',
+            './resources/images/enemy8.png',
         ];
         const randomIndex = Math.floor(Math.random() * enemyImgArr.length);
         return enemyImgArr[randomIndex % enemyImgArr.length];
@@ -98,7 +98,7 @@ function startGame() {
     // Paths to gif attacks:
     // It's empty because there are animations missing.
     const attackGif = {
-        'ATTACK': '../resources/gifs/playerAttack1.gif'
+        'ATTACK': './resources/gifs/playerAttack1.gif'
     };
 
     // Enemy stats:
@@ -170,7 +170,7 @@ function playerAttack(event) {
 
     // Loop to handle if the enemy is dead or not.
     if (currentEnemy.health <= 0) {
-        enemySprite.src = '../resources/images/tombstone.png';
+        enemySprite.src = './resources/images/tombstone.png';
         currentEnemy.health = enHealth;
         player.addStats();
         updateStats();
@@ -228,10 +228,10 @@ function enemyAttack() {
 function changeBackground() {
     const bodyElm = document.body;
     const bgsImgArray = [
-        'url(../resources/images/backgroundColorDesert.png)',
-        'url(../resources/images/backgroundColorForest.png)',
-        'url(../resources/images/backgroundColorGrass.png)',
-        'url(../resources/images/backgroundColorFall.png)',
+        'url(./resources/images/backgroundColorDesert.png)',
+        'url(./resources/images/backgroundColorForest.png)',
+        'url(./resources/images/backgroundColorGrass.png)',
+        'url(./resources/images/backgroundColorFall.png)',
     ];
     const randomIndex = Math.floor(Math.random() * bgsImgArray.length);
 
