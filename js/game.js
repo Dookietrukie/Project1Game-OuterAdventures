@@ -68,6 +68,7 @@ class Enemy {
         this.level++;
         this.image = this.setRandomImage();
 
+        msgEnemyElm.style.color = 'red';
         msgEnemyElm.textContent = `The next enemy will have ${healthIncrease} health, ${knowledgeIncrease} knowledge, ${strengthIncrease} strength, and ${defenseIncrease} defense!`;
 
     }
@@ -133,9 +134,10 @@ function playerAttack(event) {
     const playerSprite = document.getElementById('playerSprite');
     const enemySprite = document.getElementById('enemySprite');
     const idleImage = playerSprite.src;
-    
+
     let pathToGif;
     let damage;
+
     if (attackType === 'ATTACK') {
         pathToGif = player.attackGif.ATTACK;
         damage = player.strength - currentEnemy.defense;
@@ -194,6 +196,8 @@ function enemyAttack() {
     let damage = currentEnemy.strength - player.defense;
     const msgEnemyElm = document.getElementById('textLogEnemy');
     const msgPlayerElm = document.getElementById('textLogPlayer');
+    
+    msgEnemyElm.style.color = 'white';
     
     if (damage < 0) {
         damage = 1;
