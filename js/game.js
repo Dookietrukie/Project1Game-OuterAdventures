@@ -69,6 +69,7 @@ class Enemy {
         this.image = this.setRandomImage();
 
         msgEnemyElm.textContent = `The next enemy will have ${healthIncrease} health, ${knowledgeIncrease} knowledge, ${strengthIncrease} strength, and ${defenseIncrease} defense!`;
+
     }
 }
 
@@ -130,6 +131,7 @@ function playerAttack(event) {
     const attackType = event.target.textContent;
     const msgElmPlayer = document.getElementById('textLogPlayer');
     const playerSprite = document.getElementById('playerSprite');
+    const enemySprite = document.getElementById('enemySprite');
     const idleImage = playerSprite.src;
     
     let pathToGif;
@@ -166,9 +168,11 @@ function playerAttack(event) {
 
     // Loop to handle if the enemy is dead or not.
     if (currentEnemy.health <= 0) {
+        enemySprite.src = '../resources/images/tombstone.png';
         currentEnemy.health = enHealth;
         player.addStats();
         updateStats();
+
         changeBackground();
 
         // Generate a new enemy with increased stats and set as current enemy
@@ -176,6 +180,8 @@ function playerAttack(event) {
 
         player.level++;
         document.querySelector('h1 span').textContent = player.level;
+
+        
     } else {
         // Enemy is still alive...
         enemyAttack();
