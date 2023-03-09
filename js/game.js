@@ -260,7 +260,6 @@ function updateStats() {
 }
 
 // Actually start the game.
-
 startGame();
 
 const audioElm = document.getElementById('audioTrack');
@@ -269,8 +268,6 @@ document.addEventListener('click', function() {
     audioElm.volume = 0.1;
     audioElm.play();
 })
-
-
 
 // Restart the audio when it finishes.
 audioElm.addEventListener('ended', function() {
