@@ -144,14 +144,17 @@ function playerAttack(event) {
         currentEnemy.health -= damage;
         msgElmPlayer.textContent = `You attacked the enemy for ${damage} damage!`;
     } else if (attackType === 'SPELL') {
+        pathToGif = player.attackGif.ATTACK;
         damage = player.knowledge - currentEnemy.defense;
         currentEnemy.health -= damage;
         msgElmPlayer.textContent = `Your fireball did ${damage} damage!`;
     } else if (attackType === 'DEFENSE') {
+        pathToGif = player.attackGif.ATTACK;
         damage = 0;
         player.defense += 5;
         msgElmPlayer.textContent = `You raise your shield... Denfense +5!`;
     } else if (attackType === 'POTION') {
+        pathToGif = player.attackGif.ATTACK;
         damage = 0;
         player.health += 20;
         msgElmPlayer.textContent = `You drink a sparkly red potion... Health +20!`;
@@ -219,6 +222,7 @@ function enemyAttack() {
         for (let i = 0; i < attackButtons.length; i++) {
             attackButtons[i].removeEventListener('click', playerAttack);
         }
+        window.location.href = './gameover.html';
     } else {
         // Player is still alive...
         updateStats();
