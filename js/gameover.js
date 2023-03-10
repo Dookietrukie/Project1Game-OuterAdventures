@@ -6,12 +6,8 @@ buttonElm.addEventListener('click', () => {
 
 const audioElm = document.getElementById('audioTrack');
 
-document.addEventListener('click', function() {
-    audioElm.volume = 0.1;
-    audioElm.play();
-})
-
-
+audioElm.volume = 0.1;
+audioElm.play();
 
 // Restart the audio when it finishes.
 audioElm.addEventListener('ended', function() {
