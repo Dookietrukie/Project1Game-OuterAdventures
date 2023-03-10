@@ -1,32 +1,38 @@
 # Outer Adventures
 
-## Basic Implementations
+## Introduction
 
-- [ ] Basic Character Creation: Allow the user to create a basic character with a few attributes, such as strength, dexterity, and intelligence.
+This is a simple game where the player fights enemies by attacking them with different skills. The game has been implemented using HTML, CSS, and JavaScript. The game has various components like the Player class, Enemy class, functions for player attack, enemy attack, and game updates.
 
-- [ ] Turn-Based Combat: Implement a simple turn-based combat system where the user can choose between basic attacks and skills to defeat enemies. The game should have a limited number of enemies and each enemy should have its own unique attributes.
+## Getting Started & Demo
 
-- [ ] Leveling System: Implement a simple leveling system where the user can gain experience points by defeating enemies. The user can level up and allocate points to improve their attributes.
+To get started with the game, simply open the `index.html` file in a web browser. The game will start automatically.
 
-- [ ] Inventory System: The user can also use healing items to restore their health during combat.
+OR
 
-## MVP
+You can click this link to play on your browser: [Outer Adventures](https://dookietrukie.github.io/Project1Game-OuterAdventures/).
 
-At the start of the game, the user is greeted with a welcome and is asked to roll for 4 different values. One for health, one for strength, one for knowledge and one for defense. This will become the parameters of our character. Apart from that, the user also needs to give the character a name. 
+## Playing the Game
 
-Once all of that is ready, the first level begins. An enemy spawns and we have to fight him. In this first version of the game, the only option that the player has is "Attack". In turns, the player will attack the enemy, and viceversa. The one that reaches health = 0 first, dies. If it's the enemy, the player gets to the next level (aka another enemy spawns and the level counter increases by 1), if it's the player, the enemy has won and the game ends (aka we get to the
-Game Over page).
+The game is pretty simple to play. The player fights enemies by attacking them with different skills. There are four skills available: ATTACK, SPELL, DEFENSE, and POTION.
 
-## Things that will ideally be implemented
+* **ATTACK**: Attacks the enemy with the player's strength.
+* **SPELL**: Casts a fireball at the enemy with the player's knowledge.
+* **DEFENSE**: Increases the player's defense.
+* **POTION**: Restores the player's health.
 
-- [ ] The player has more than one action to choose from at every turn: Attack, Spell, Potion. 
+To attack the enemy, click on the desired skill button. The enemy will then attack the player, and the game will continue until either the player or the enemy has been defeated.
 
-- [ ] The player can level up and boost his own stats. 
+## Game Mechanics
 
-- [ ] The enemies get more health and defense as the game progresses. 
+The game is turn-based, meaning the player attacks first and then the enemy attacks. The player's attack strength is determined by their selected skill and their stats. The enemy's stats are randomly generated at the start of each new enemy battle.
 
-- [ ] Every 5 regular enemies, you fight a boss (more health and defense than regular enemies). Killing one of those grants you another potion. 
+If the enemy's health drops to zero or less, the player will win the battle and gain additional stats. A new enemy will spawn with increased stats, and the game will continue.
 
-- [ ] Implement visual elements on the UI that represent your current HP, enemy current HP, and current game level and character level. 
+If the player's health drops to zero or less, the game will end and the player will lose.
 
-- [ ] Different animations for every character action and for when an enemy dies (?).
+## Conclusion
+
+This game is a simple but fun game that can be played by anyone. If you have any questions or feedback, feel free to reach out. 
+
+**_Thank you for playing!_**
